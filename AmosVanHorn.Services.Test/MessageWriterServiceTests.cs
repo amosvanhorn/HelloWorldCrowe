@@ -14,18 +14,22 @@ namespace AmosVanHorn.Services.Test
             // set test text
             var testText = "Hello World Default";
 
-            // get message writer service
-            var svc = new MessageWriterService();
-
+            // redirect the console output into a stringbuilder
             StringBuilder builder = new StringBuilder();
             TextWriter writer = new StringWriter(builder);
             Console.SetOut(writer);
 
-            // write message, letting service using default writer (which is set to ConsoleMessageWriter in the config)
-            svc.WriteMessage(testText);
+            // get message writer service
+            var svc = new MessageWriterService();
 
-            // read the console to determine if it wrote correctly
+            // write message, letting service using default writer (which is set to ConsoleMessageWriter in the config)
+            bool success = svc.WriteMessage(testText);
+
+            // read the redirected console output to determine if it wrote correctly
             Assert.AreEqual(testText, builder.ToString());
+
+            // make sure true was returned (and that a caught/logged exception didn't happen)
+            Assert.AreEqual(success, true);
         }
 
         [TestMethod]
@@ -34,18 +38,22 @@ namespace AmosVanHorn.Services.Test
             // set test text
             var testText = "Hello World Console";
 
-            // get message writer service
-            var svc = new MessageWriterService();
-
+            // redirect the console output into a stringbuilder
             StringBuilder builder = new StringBuilder();
             TextWriter writer = new StringWriter(builder);
             Console.SetOut(writer);
 
-            // write message, passing specific writer 
-            svc.WriteMessage(testText, new MessageWriters.ConsoleMessageWriter());
+            // get message writer service
+            var svc = new MessageWriterService();
 
-            // read the console to determine if it wrote correctly
+            // write message, passing a specific IMessageWriter
+            bool success = svc.WriteMessage(testText, new MessageWriters.ConsoleMessageWriter());
+
+            // read the redirected console output to determine if it wrote correctly
             Assert.AreEqual(testText, builder.ToString());
+
+            // make sure true was returned (and that a caught/logged exception didn't happen)
+            Assert.AreEqual(success, true);
         }
     }
 }

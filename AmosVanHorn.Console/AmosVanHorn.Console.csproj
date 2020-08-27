@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HelloWorldAmosVanHorn.Services\AmosVanHorn.Services.csproj">
+    <ProjectReference Include="..\AmosVanHorn.Services\AmosVanHorn.Services.csproj">
       <Project>{576f63c3-2096-44c5-a0ea-3fe5a9fa058f}</Project>
       <Name>AmosVanHorn.Services</Name>
     </ProjectReference>
