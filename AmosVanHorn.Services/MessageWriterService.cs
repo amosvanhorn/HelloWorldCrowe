@@ -26,7 +26,7 @@ namespace AmosVanHorn.Services
             catch(Exception ex)
             {
                 // log error
-                LogError(ex.Message);
+                LogError(ex);
 
                 // return false to indicate failure
                 return false;
@@ -45,7 +45,7 @@ namespace AmosVanHorn.Services
             return defaultmessagewriter;
         }
 
-        private void LogError(string message)
+        private void LogError(Exception ex)
         {
             // log somewhere
         }
