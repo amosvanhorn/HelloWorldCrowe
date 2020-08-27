@@ -10,7 +10,7 @@ namespace AmosVanHorn.Services.MessageWriters
     {
         public void WriteMessage(string message)
         {
-            // write the line to console
+            // write the message to the console
             Console.Write(message);
         }
     }
