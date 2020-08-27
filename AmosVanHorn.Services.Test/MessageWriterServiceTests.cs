@@ -22,7 +22,7 @@ namespace AmosVanHorn.Services.Test
             // get message writer service
             var svc = new MessageWriterService();
 
-            // write message, letting service using default writer (which is set to ConsoleMessageWriter in the config)
+            // write message, letting service using default writer (which is set to ConsoleMessageWriter in the app.config)
             bool success = svc.WriteMessage(testText);
 
             // read the redirected console output to determine if it wrote correctly
